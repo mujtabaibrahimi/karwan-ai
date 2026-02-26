@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karwan AI -Your AI Employee That Never Stops Working</title>
+  <meta name="description" content="Karwan AI handles your emails, client follow-ups, and leads automatically. Like hiring a full-time employee, but it works 24/7 and costs a fraction.">
+  <meta property="og:title" content="Karwan AI -Your AI Employee That Never Stops Working">
+  <meta property="og:description" content="Karwan AI handles your emails, client follow-ups, and leads automatically. Like hiring a full-time employee, but it works 24/7 and costs a fraction.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #C8D9E8 0%, #D6E4F0 50%, #C8D9E8 100%);
+      background-attachment: fixed;
+      color: #1a1a2e;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .dari, [dir="rtl"] {
+      font-family: 'Noto Nastaliq Urdu', serif;
+    }
+
+    /* ========== UTILITY ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+      padding: 48px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .section-label {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #555;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .section-heading {
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: #1a1a2e;
+    }
+
+    .section-subtext {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 640px;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: #1a1a2e;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #1a1a2e;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #2d2d4e;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: #fff;
+      color: #1a1a2e;
+      padding: 14px 32px;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 2px solid #d0d0d0;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: #1a1a2e;
+      transform: translateY(-1px);
+    }
+
+    /* ========== ANIMATIONS ========== */
+    .hero-headline .word {
+      display: inline-block;
+      overflow: hidden;
+    }
+
+    .hero-headline .word-inner {
+      display: inline-block;
+      will-change: transform;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes gradientBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    /* ========== NAVIGATION ========== */
+    .hero-card {
+      margin: 24px auto;
+      max-width: 1200px;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card:hover {
+      transform: none;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo .dari {
+      font-size: 1rem;
+      color: #888;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #555;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #1a1a2e; }
+
+    .nav-cta {
+      padding: 10px 24px;
+      font-size: 0.9rem;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #1a1a2e;
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 24px;
+      border-bottom: 1px solid #f0f0f0;
+      background: #fff;
+    }
+
+    .mobile-menu.active { display: flex; }
+
+    .mobile-menu a {
+      text-decoration: none;
+      color: #555;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+
+    /* ========== HERO SECTION ========== */
+    .hero {
+      padding: 64px 48px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Noto Nastaliq Urdu', serif;
+      font-size: 20rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      z-index: 0;
+      direction: rtl;
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #eafaf0;
+      color: #2a7a4b;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-badge .dot {
+      width: 8px;
+      height: 8px;
+      background: #34c759;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-headline {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      color: #1a1a2e;
+    }
+
+    .hero-soul {
+      margin-bottom: 20px;
+    }
+
+    .hero-soul .dari {
+      font-size: 1.5rem;
+      color: #F5A623;
+      display: block;
+      direction: rtl;
+      text-align: left;
+    }
+
+    .hero-soul .translation {
+      font-size: 0.9rem;
+      color: #999;
+      font-style: italic;
+    }
+
+    .hero-subtext {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      max-width: 520px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ========== DASHBOARD MOCKUP ========== */
+    .hero-dashboard {
+      position: relative;
+      z-index: 1;
+      background: #f7f9fc;
+      border-radius: 24px;
+      padding: 32px;
+      border: 1px solid #e8ecf0;
+    }
+
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 0.85rem;
+      color: #999;
+      font-weight: 500;
+    }
+
+    .dashboard-header .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dashboard-header .dot:nth-child(1) { background: #ff5f57; }
+    .dashboard-header .dot:nth-child(2) { background: #ffbd2e; }
+    .dashboard-header .dot:nth-child(3) { background: #28c840; }
+
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      border: 1px solid #eee;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #999;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .stat-card .icon {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .dashboard-graph {
+      background: #fff;
+      border-radius: 16px;
+      padding: 20px;
+      border: 1px solid #eee;
+    }
+
+    .graph-label {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .graph-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 60px;
+    }
+
+    .graph-bar {
+      flex: 1;
+      background: linear-gradient(180deg, #F5A623, #f5c773);
+      border-radius: 4px 4px 0 0;
+      min-height: 8px;
+      transition: height 0.5s ease;
+    }
+
+    /* ========== SERVICES SECTION ========== */
+    .services-section {
+      padding: 80px 0;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .tier-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border-left: 5px solid;
+      position: relative;
+    }
+
+    .tier-card.bronze { border-left-color: #CD7F32; }
+    .tier-card.silver { border-left-color: #A8A9AD; }
+    .tier-card.gold { border-left-color: #FFD700; }
+    .tier-card.platinum { border-left-color: #E5E4E2; }
+
+    /* Gold shimmer on hover */
+    .tier-card.gold:hover {
+      background: linear-gradient(90deg, #fff, #fffdf5, #fff);
+      background-size: 200% 100%;
+      animation: shimmer 2s ease-in-out infinite;
+    }
+
+    /* Platinum animated gradient border */
+    .tier-card.platinum {
+      border-left: none;
+      border: 2px solid transparent;
+      background-image: linear-gradient(#fff, #fff), linear-gradient(135deg, #E5E4E2, #c0c0c0, #E5E4E2, #a8a8a8, #E5E4E2);
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      background-size: 100% 100%, 300% 300%;
+      animation: gradientBorder 4s ease infinite;
+    }
+
+    .tier-badge {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .tier-card.bronze .tier-badge { background: #CD7F32; }
+    .tier-card.silver .tier-badge { background: #A8A9AD; }
+    .tier-card.gold .tier-badge { background: #FFD700; color: #1a1a2e; }
+    .tier-card.platinum .tier-badge { background: linear-gradient(135deg, #E5E4E2, #c0c0c0); color: #1a1a2e; }
+
+    .tier-dari {
+      font-size: 0.85rem;
+      color: #999;
+      margin-top: 4px;
+      display: block;
+      direction: rtl;
+      text-align: left;
+    }
+
+    .tier-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 12px 0 4px;
+      color: #1a1a2e;
+    }
+
+    .tier-delivery {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #888;
+      background: #f5f5f5;
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #7c3aed;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tier-desc {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .tier-deliverables {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .tier-deliverables li {
+      font-size: 0.9rem;
+      color: #444;
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .tier-deliverables li::before {
+      content: "\2726";
+      position: absolute;
+      left: 0;
+      color: #F5A623;
+      font-size: 0.8rem;
+    }
+
+    .tier-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
+    .tier-price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #999;
+    }
+
+    .tier-cta {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 100px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 2px solid #1a1a2e;
+      background: #1a1a2e;
+      color: #fff;
+    }
+
+    .tier-cta:hover {
+      background: #2d2d4e;
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .how-section {
+      padding: 80px 0;
+    }
+
+    .how-card {
+      text-align: center;
+    }
+
+    .how-card:hover { transform: none; }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 24px;
+      margin: 48px 0 40px;
+      position: relative;
+    }
+
+    .step {
+      flex: 1;
+      max-width: 280px;
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 56px;
+      height: 56px;
+      background: #1a1a2e;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 auto 16px;
+    }
+
+    .step-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #1a1a2e;
+    }
+
+    .step-desc {
+      font-size: 0.9rem;
+      color: #888;
+      line-height: 1.6;
+    }
+
+    .step-connector {
+      position: absolute;
+      top: 28px;
+      left: calc(50% + 36px);
+      width: calc(100% - 24px);
+      height: 2px;
+      background: repeating-linear-gradient(90deg, #d0d0d0 0, #d0d0d0 8px, transparent 8px, transparent 14px);
+      transform-origin: left center;
+    }
+
+    .step:last-child .step-connector { display: none; }
+
+    .how-quote {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .how-quote .dari {
+      font-size: 1.3rem;
+      color: #F5A623;
+      display: block;
+      direction: rtl;
+      margin-bottom: 8px;
+    }
+
+    .how-quote .translation {
+      font-size: 0.9rem;
+      color: #999;
+      font-style: italic;
+    }
+
+    /* ========== WHY DIFFERENT ========== */
+    .why-section { padding: 80px 0; }
+
+    .why-card { overflow: hidden; }
+    .why-card:hover { transform: none; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+
+    .compare-card {
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid #eee;
+    }
+
+    .compare-card.other {
+      background: #fafafa;
+    }
+
+    .compare-card.karwan {
+      background: #f0f7ff;
+      border-color: #c8ddf0;
+    }
+
+    .compare-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #1a1a2e;
+    }
+
+    .compare-card ul {
+      list-style: none;
+    }
+
+    .compare-card ul li {
+      padding: 8px 0;
+      font-size: 0.95rem;
+      color: #555;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .compare-card.other li::before {
+      content: "\2717";
+      color: #ccc;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .compare-card.karwan li::before {
+      content: "\2713";
+      color: #34c759;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ========== SOCIAL PROOF ========== */
+    .proof-section { padding: 80px 0; }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .proof-card {
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .proof-stars {
+      color: #F5A623;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .proof-quote {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .proof-author {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    .proof-role {
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    /* ========== FINAL CTA ========== */
+    .cta-section { padding: 80px 0 40px; }
+
+    .cta-card {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .cta-card:hover { transform: none; }
+
+    .cta-headline {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .cta-dari {
+      font-size: 1.6rem;
+      color: #F5A623;
+      direction: rtl;
+      margin-bottom: 16px;
+      font-family: 'Noto Nastaliq Urdu', serif;
+    }
+
+    .cta-subtext {
+      font-size: 1rem;
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    .waitlist-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .waitlist-form input {
+      flex: 1;
+      padding: 14px 24px;
+      border: 2px solid #e0e0e0;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .waitlist-form input:focus {
+      border-color: #1a1a2e;
+    }
+
+    .waitlist-form button {
+      white-space: nowrap;
+    }
+
+    .waitlist-success {
+      display: none;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .waitlist-success.visible {
+      display: block;
+    }
+
+    .waitlist-success p {
+      font-size: 1.05rem;
+      color: #2a7a4b;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .waitlist-success .dari {
+      font-size: 1.1rem;
+      color: #F5A623;
+      direction: rtl;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 48px 0 32px;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+    }
+
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      list-style: none;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: #888;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #1a1a2e; }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: #bbb;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 40px 32px;
+      }
+
+      .hero-headline { font-size: 2.4rem; }
+      .hero-watermark { font-size: 12rem; }
+
+      .tier-grid { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: 1fr; }
+      .dashboard-stats { grid-template-columns: repeat(3, 1fr); }
+
+      .steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .step { max-width: 100%; }
+      .step-connector { display: none !important; }
+
+      .card { padding: 32px; }
+      .section-heading { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .nav-cta.desktop-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .hero { padding: 32px 24px; }
+      .hero-headline { font-size: 2rem; }
+      .hero-watermark { font-size: 8rem; }
+
+      .card { padding: 24px; border-radius: 24px; }
+
+      .waitlist-form {
+        flex-direction: column;
+      }
+
+      .waitlist-form button {
+        width: 100%;
+      }
+
+      .dashboard-stats { grid-template-columns: repeat(3, 1fr); }
+      .stat-number { font-size: 1.4rem; }
+      .stat-card { padding: 12px; }
+
+      .tier-card { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== HERO CARD (Nav + Hero) ====== -->
+  <div class="container">
+    <div class="card hero-card">
+      <!-- Navigation -->
+      <nav class="nav">
+        <a href="#" class="nav-logo">
+          ⬡ Karwan AI <span class="dari" dir="rtl">· کاروان</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#services">Pricing</a></li>
+          <li><a href="#why">About</a></li>
+        </ul>
+        <a href="#cta" class="btn-primary nav-cta desktop-cta">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#services">Pricing</a>
+        <a href="#why">About</a>
+        <a href="#cta" class="btn-primary">Get Started</a>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="hero">
+        <div class="hero-watermark">کاروان</div>
+
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="dot"></span>
+            Always On -Your AI Employee Never Sleeps
+          </div>
+
+          <h1 class="hero-headline">
+            Your Business Never Stops.<br>
+            Neither Does Karwan.
+          </h1>
+
+          <div class="hero-soul">
+            <span class="dari" dir="rtl">کاروان هیڅکله نه درېږي</span>
+            <span class="translation">The caravan never stops</span>
+          </div>
+
+          <p class="hero-subtext">
+            Karwan AI manages your emails, follows up on leads, monitors your inbox, posts to social media, and runs your business operations -automatically. You set the goal. Karwan executes.
+          </p>
+
+          <div class="hero-ctas">
+            <a href="#cta" class="btn-primary">Get Started</a>
+            <a href="#services" class="btn-secondary">See Our Services</a>
+          </div>
+        </div>
+
+        <!-- Dashboard Mockup -->
+        <div class="hero-dashboard">
+          <div class="dashboard-header">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span style="margin-left: 12px;">Karwan Dashboard</span>
+          </div>
+
+          <div class="dashboard-stats">
+            <div class="stat-card">
+              <div class="icon">📧</div>
+              <div class="stat-number">47</div>
+              <div class="stat-label">Emails Triaged</div>
+            </div>
+            <div class="stat-card">
+              <div class="icon">🎯</div>
+              <div class="stat-number">12</div>
+              <div class="stat-label">Leads Followed Up</div>
+            </div>
+            <div class="stat-card">
+              <div class="icon">📅</div>
+              <div class="stat-number">8</div>
+              <div class="stat-label">Posts Scheduled</div>
+            </div>
+          </div>
+
+          <div class="dashboard-graph">
+            <div class="graph-label">Activity This Week</div>
+            <div class="graph-bars">
+              <div class="graph-bar" style="height: 35%"></div>
+              <div class="graph-bar" style="height: 55%"></div>
+              <div class="graph-bar" style="height: 45%"></div>
+              <div class="graph-bar" style="height: 80%"></div>
+              <div class="graph-bar" style="height: 65%"></div>
+              <div class="graph-bar" style="height: 90%"></div>
+              <div class="graph-bar" style="height: 70%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SERVICES SECTION ====== -->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label">✦ Our Services</span>
+        <h2 class="section-heading">Choose Your Level of Automation</h2>
+        <p class="section-subtext" style="margin: 0 auto;">From your first AI setup to a full-time digital worker that never sleeps - Karwan grows with your business.</p>
+      </div>
+
+      <div class="tier-grid">
+        <!-- Bronze -->
+        <div class="tier-card bronze">
+          <span class="tier-badge">Bronze</span>
+          <span class="tier-dari dari" dir="rtl">بنسټ</span>
+          <h3 class="tier-title">Foundation</h3>
+          <span class="tier-delivery">8-12 hours</span>
+          <p class="tier-desc">Get Karwan set up and ready to go. Your AI starts reading your emails, sorting your files, and taking action - right away.</p>
+          <ul class="tier-deliverables">
+            <li>AI watches your Gmail inbox for you</li>
+            <li>Sorts emails into folders automatically</li>
+            <li>Saves your business info so AI knows your style</li>
+            <li>AI connected to your email and files</li>
+            <li>Basic assistant tasks ready to use</li>
+          </ul>
+          <div class="tier-price">3,000 ؋ <span>(AFN)</span></div>
+          <a href="#cta" class="tier-cta">Start with Bronze</a>
+        </div>
+
+        <!-- Silver -->
+        <div class="tier-card silver">
+          <span class="tier-badge">Silver</span>
+          <span class="tier-dari dari" dir="rtl">مرستیال</span>
+          <h3 class="tier-title">Functional Assistant</h3>
+          <span class="tier-delivery">20-30 hours</span>
+          <p class="tier-desc">Your AI watches your email, WhatsApp, and LinkedIn all at once. It posts content, plans your week, and always asks you before doing anything important.</p>
+          <ul class="tier-deliverables">
+            <li>Everything in Bronze</li>
+            <li>Watches Gmail, WhatsApp, and LinkedIn together</li>
+            <li>Posts on LinkedIn to bring in new clients</li>
+            <li>Creates a weekly plan for your business</li>
+            <li>Sends emails on your behalf</li>
+            <li>Asks your permission before anything sensitive</li>
+            <li>Runs tasks on a schedule - even when you're busy</li>
+          </ul>
+          <div class="tier-price">5,000 ؋ <span>(AFN)</span></div>
+          <a href="#cta" class="tier-cta">Upgrade to Silver</a>
+        </div>
+
+        <!-- Gold -->
+        <div class="tier-card gold">
+          <span class="popular-badge">Most Popular</span>
+          <span class="tier-badge">Gold</span>
+          <span class="tier-dari dari" dir="rtl">خپلسر کارمند</span>
+          <h3 class="tier-title">Autonomous Employee</h3>
+          <span class="tier-delivery">40+ hours</span>
+          <p class="tier-desc">A real AI employee that runs your business. It handles your money tracking, posts on all your social media, and gives you a weekly report on how everything is going.</p>
+          <ul class="tier-deliverables">
+            <li>Everything in Silver</li>
+            <li>Manages both your personal and business tasks</li>
+            <li>Tracks your money and expenses automatically</li>
+            <li>Posts on Facebook, Instagram, and Twitter (X)</li>
+            <li>Sends you a weekly business health report</li>
+            <li>Gives you a boss-level summary every week</li>
+            <li>Fixes its own mistakes and keeps a log</li>
+            <li>Handles big tasks from start to finish on its own</li>
+          </ul>
+          <div class="tier-price">12,000 ؋ <span>(AFN)</span></div>
+          <a href="#cta" class="tier-cta">Go Gold</a>
+        </div>
+
+        <!-- Platinum -->
+        <div class="tier-card platinum">
+          <span class="tier-badge">Platinum</span>
+          <span class="tier-dari dari" dir="rtl">شبانه‌روزي اجرایي</span>
+          <h3 class="tier-title">Always-On Cloud Executive</h3>
+          <span class="tier-delivery">60+ hours</span>
+          <p class="tier-desc">Your AI lives in the cloud and works 24/7 - even when your laptop is off. It reads emails, writes replies, schedules posts, and has everything ready for your approval when you wake up.</p>
+          <ul class="tier-deliverables">
+            <li>Everything in Gold</li>
+            <li>Runs on the cloud - never turns off, ever</li>
+            <li>Sorts emails, writes replies, and schedules posts while you sleep</li>
+            <li>You just approve things from your phone</li>
+            <li>Your data stays safe and synced everywhere</li>
+            <li>Money tracking runs online with backups</li>
+            <li>Wake up to a list of things ready for your OK</li>
+            <li>Full setup guide so you understand everything</li>
+          </ul>
+          <div class="tier-price">20,000 ؋ <span>(AFN)</span></div>
+          <a href="#cta" class="tier-cta">Go Platinum</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== HOW IT WORKS ====== -->
+  <section id="how" class="how-section">
+    <div class="container">
+      <div class="card how-card">
+        <span class="section-label">✦ How It Works</span>
+        <h2 class="section-heading">Set It Once. Let It Run.</h2>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-connector"></div>
+            <div class="step-number">1</div>
+            <h3 class="step-title">Tell Karwan Your Goal</h3>
+            <p class="step-desc">You describe what your business needs -in plain language, not code.</p>
+          </div>
+          <div class="step">
+            <div class="step-connector"></div>
+            <div class="step-number">2</div>
+            <h3 class="step-title">Karwan Builds the Workflow</h3>
+            <p class="step-desc">AI maps out how to achieve your goal and sets up the automations.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3 class="step-title">It Executes -Nonstop</h3>
+            <p class="step-desc">Runs 24/7, handles tasks, and reports back to you with results.</p>
+          </div>
+        </div>
+
+        <div class="how-quote">
+          <span class="dari" dir="rtl">کاروان د منزل پروا نه کوي، یوازې مخ په وړاندې ځي</span>
+          <span class="translation">The caravan does not worry about the destination -it only moves forward</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WHY KARWAN IS DIFFERENT ====== -->
+  <section id="why" class="why-section">
+    <div class="container">
+      <div class="card why-card">
+        <span class="section-label dari" dir="rtl">ولې کاروان؟</span>
+        <h2 class="section-heading">Not a Tool. An Employee.</h2>
+
+        <div class="why-grid">
+          <div class="compare-card other">
+            <h3>Other Tools</h3>
+            <ul>
+              <li>You still do the work</li>
+              <li>Feature-heavy, needs daily attention</li>
+              <li>Stops when you stop</li>
+              <li>You pay for software, not results</li>
+            </ul>
+          </div>
+          <div class="compare-card karwan">
+            <h3>Karwan AI</h3>
+            <ul>
+              <li>Outcome-focused, not feature-focused</li>
+              <li>Works 24/7 without being told</li>
+              <li>Keeps running while you sleep</li>
+              <li>You pay for work that gets done</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SOCIAL PROOF ====== -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="services-header">
+        <span class="section-label">✦ What People Say</span>
+        <h2 class="section-heading">Trusted by Business Owners</h2>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"I was drowning in 200+ emails a day. Karwan triages everything, drafts my replies, and I just approve. I got my mornings back."</p>
+          <p class="proof-author">Ahmad R.</p>
+          <p class="proof-role">Karwan Exports, Kabul</p>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"Leads used to go cold because I couldn't reply fast enough. Now Karwan follows up within minutes. My conversion rate doubled."</p>
+          <p class="proof-author">Sara M.</p>
+          <p class="proof-role">Online Boutique Owner</p>
+        </div>
+
+        <div class="proof-card">
+          <div class="proof-stars">★★★★★</div>
+          <p class="proof-quote">"It's like having an assistant who never calls in sick. Scheduling, social posts, client follow-ups -it just handles it. I focus on the work that matters."</p>
+          <p class="proof-author">David K.</p>
+          <p class="proof-role">Freelance Consultant</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FINAL CTA ====== -->
+  <section id="cta" class="cta-section">
+    <div class="container">
+      <div class="card cta-card">
+        <h2 class="cta-headline">Your caravan never stops.</h2>
+        <p class="cta-dari" dir="rtl">ستاسو کاروان هیڅکله نه درېږي</p>
+        <p class="cta-subtext">Join the waitlist. Tell us which tier fits your business.</p>
+
+        <form class="waitlist-form" id="waitlistForm">
+          <input type="email" placeholder="you@yourbusiness.com" required aria-label="Email address">
+          <button type="submit" class="btn-primary">Join Waitlist</button>
+        </form>
+
+        <div class="waitlist-success" id="waitlistSuccess">
+          <p>You're on the list. Karwan never stops -and now, neither will you.</p>
+          <span class="dari" dir="rtl">کاروان درېږي نه</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-logo">Karwan AI <span class="dari" dir="rtl">· کاروان</span></p>
+      <p class="footer-tagline">
+        Nonstop AI for your business<br>
+        <span class="dari" dir="rtl">د خپل سوداګرۍ لپاره بې‌وقفه هوش مصنوعي</span>
+      </p>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#services">Pricing</a></li>
+        <li><a href="#cta">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Karwan AI. The caravan never stops.</p>
+    </div>
+  </footer>
+
+  <!-- GSAP + ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ====== Smooth Scroll ======
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          document.getElementById('mobileMenu').classList.remove('active');
+          document.getElementById('hamburger').classList.remove('active');
+        }
+      });
+    });
+
+    // ====== Mobile Hamburger ======
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+      });
+    });
+
+    // ====== Waitlist Form ======
+    const form = document.getElementById('waitlistForm');
+    const success = document.getElementById('waitlistSuccess');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      form.style.display = 'none';
+      success.style.display = 'block';
+      gsap.fromTo(success, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: 0.5 });
+    });
+
+    // ====== HERO: Split Headline into Words ======
+    function splitWords(el) {
+      const html = el.innerHTML;
+      const parts = html.split(/(<br\s*\/?>)/gi);
+      el.innerHTML = parts.map(part => {
+        if (part.match(/<br\s*\/?>/i)) return part;
+        return part.split(/\s+/).filter(w => w).map(word =>
+          '<span class="word"><span class="word-inner">' + word + '</span></span>'
+        ).join(' ');
+      }).join('');
+      return el.querySelectorAll('.word-inner');
+    }
+
+    const headlineEl = document.querySelector('.hero-headline');
+    const words = splitWords(headlineEl);
+
+    // ====== HERO: Store stat values for count-up ======
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statTargets = Array.from(statNumbers).map(el => parseInt(el.textContent));
+    statNumbers.forEach(el => { el.textContent = '0'; });
+
+    // ====== HERO: Store graph bar heights ======
+    const bars = document.querySelectorAll('.graph-bar');
+    const barHeights = Array.from(bars).map(bar => bar.style.height);
+    bars.forEach(bar => { bar.style.height = '0%'; });
+
+    // ====== HERO: Set Initial States ======
+    const statCards = document.querySelectorAll('.stat-card');
+    gsap.set('.hero-badge', { y: -20, autoAlpha: 0 });
+    gsap.set(words, { y: '110%' });
+    gsap.set('.hero-soul', { autoAlpha: 0, y: 10 });
+    gsap.set('.hero-subtext', { y: 20, autoAlpha: 0 });
+    gsap.set('.hero-ctas > *', { y: 20, autoAlpha: 0 });
+    gsap.set('.hero-dashboard', { x: 80, rotation: 3, autoAlpha: 0 });
+    gsap.set(statCards, { y: 20, autoAlpha: 0 });
+
+    // ====== HERO: Entrance Timeline ======
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    heroTl
+      .to('.hero-badge', { y: 0, autoAlpha: 1, duration: 0.6 }, 0.2)
+      .to(words, { y: '0%', duration: 0.8, stagger: 0.08 }, 0.4)
+      .to('.hero-soul', { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.3')
+      .to('.hero-subtext', { y: 0, autoAlpha: 1, duration: 0.5 }, '-=0.2')
+      .to('.hero-ctas > *', { y: 0, autoAlpha: 1, duration: 0.4, stagger: 0.15 }, '-=0.2')
+      .to('.hero-dashboard', { x: 0, rotation: 0, autoAlpha: 1, duration: 1, ease: 'power3.out' }, '-=0.6')
+      .to(statCards, { y: 0, autoAlpha: 1, duration: 0.5, stagger: 0.12 }, '-=0.5')
+      .add(() => {
+        statNumbers.forEach((el, i) => {
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: statTargets[i],
+            duration: 2,
+            ease: 'power2.out',
+            onUpdate: () => { el.textContent = Math.round(obj.val); }
+          });
+        });
+      }, '-=0.3')
+      .add(() => {
+        bars.forEach((bar, i) => {
+          gsap.to(bar, { height: barHeights[i], duration: 0.8, delay: i * 0.06, ease: 'power3.out' });
+        });
+      }, '-=1.8');
+
+    // ====== WATERMARK: Continuous Drift ======
+    gsap.to('.hero-watermark', {
+      x: 80,
+      duration: 120,
+      repeat: -1,
+      yoyo: true,
+      ease: 'none'
+    });
+
+    // ====== PARALLAX: Watermark + Dashboard ======
+    gsap.to('.hero-watermark', {
+      scrollTrigger: {
+        trigger: '.hero-card',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      },
+      y: -120,
+      ease: 'none'
+    });
+
+    gsap.to('.hero-dashboard', {
+      scrollTrigger: {
+        trigger: '.hero-card',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      },
+      y: -60,
+      ease: 'none'
+    });
+
+    // ====== SERVICES: Header ======
+    const servicesHeader = document.querySelector('.services-section > .container > .services-header');
+    gsap.set(servicesHeader, { y: 30, autoAlpha: 0 });
+    ScrollTrigger.create({
+      trigger: servicesHeader,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(servicesHeader, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out' });
+      }
+    });
+
+    // ====== SERVICES: Tier Cards Staggered Entrance ======
+    gsap.set('.tier-card', { y: 60, autoAlpha: 0 });
+    ScrollTrigger.batch('.tier-card', {
+      start: 'top 88%',
+      onEnter: (batch) => {
+        gsap.to(batch, { y: 0, autoAlpha: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' });
+      },
+      once: true
+    });
+
+    // ====== HOW IT WORKS: Sequential Reveal ======
+    const howCard = document.querySelector('.how-card');
+    const steps = document.querySelectorAll('.step');
+    const connectors = document.querySelectorAll('.step-connector');
+
+    gsap.set(howCard, { autoAlpha: 0, y: 40 });
+    gsap.set(steps, { y: 30, autoAlpha: 0 });
+    gsap.set(connectors, { scaleX: 0 });
+    gsap.set('.how-quote', { autoAlpha: 0, y: 20 });
+
+    ScrollTrigger.create({
+      trigger: '.how-section',
+      start: 'top 70%',
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.to(howCard, { autoAlpha: 1, y: 0, duration: 0.6 });
+
+        steps.forEach((step, i) => {
+          tl.to(step, { y: 0, autoAlpha: 1, duration: 0.5 }, i === 0 ? '-=0.1' : '-=0.1');
+          if (connectors[i]) {
+            tl.to(connectors[i], { scaleX: 1, duration: 0.4 }, '-=0.2');
+          }
+        });
+
+        tl.to('.how-quote', { autoAlpha: 1, y: 0, duration: 0.5 }, '-=0.2');
+      }
+    });
+
+    // ====== WHY KARWAN: Comparison Cards Slide In ======
+    const whyCard = document.querySelector('.why-card');
+    gsap.set(whyCard, { autoAlpha: 0, y: 40 });
+    gsap.set('.compare-card.other', { x: -60, autoAlpha: 0 });
+    gsap.set('.compare-card.karwan', { x: 60, autoAlpha: 0 });
+
+    ScrollTrigger.create({
+      trigger: '.why-section',
+      start: 'top 70%',
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.to(whyCard, { autoAlpha: 1, y: 0, duration: 0.6 })
+          .to('.compare-card.other', { x: 0, autoAlpha: 1, duration: 0.7 }, '-=0.2')
+          .to('.compare-card.karwan', { x: 0, autoAlpha: 1, duration: 0.7 }, '-=0.5');
+      }
+    });
+
+    // ====== SOCIAL PROOF: Header ======
+    const proofHeader = document.querySelector('.proof-section .services-header');
+    gsap.set(proofHeader, { y: 30, autoAlpha: 0 });
+    ScrollTrigger.create({
+      trigger: proofHeader,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.to(proofHeader, { y: 0, autoAlpha: 1, duration: 0.7, ease: 'power3.out' });
+      }
+    });
+
+    // ====== SOCIAL PROOF: Testimonial Cards (Staggered + Subtle Rotation) ======
+    const proofCards = document.querySelectorAll('.proof-card');
+    gsap.set(proofCards, { y: 50, autoAlpha: 0, rotateX: 8 });
+
+    ScrollTrigger.batch('.proof-card', {
+      start: 'top 88%',
+      onEnter: (batch) => {
+        gsap.to(batch, {
+          y: 0, autoAlpha: 1, rotateX: 0,
+          duration: 0.8, stagger: 0.15, ease: 'power3.out'
+        });
+      },
+      once: true
+    });
+
+    // ====== FINAL CTA: Scale + Stagger ======
+    const ctaCard = document.querySelector('.cta-card');
+    gsap.set(ctaCard, { scale: 0.9, autoAlpha: 0 });
+    gsap.set('.cta-headline, .cta-dari, .cta-subtext, .waitlist-form', { y: 20, autoAlpha: 0 });
+
+    ScrollTrigger.create({
+      trigger: '.cta-section',
+      start: 'top 75%',
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+        tl.to(ctaCard, { scale: 1, autoAlpha: 1, duration: 0.7 })
+          .to('.cta-headline', { y: 0, autoAlpha: 1, duration: 0.5 }, '-=0.3')
+          .to('.cta-dari', { y: 0, autoAlpha: 1, duration: 0.5 }, '-=0.3')
+          .to('.cta-subtext', { y: 0, autoAlpha: 1, duration: 0.4 }, '-=0.3')
+          .to('.waitlist-form', { y: 0, autoAlpha: 1, duration: 0.4 }, '-=0.2');
+      }
+    });
+
+    // ====== FOOTER: Fade In ======
+    gsap.set('.footer', { autoAlpha: 0, y: 20 });
+    ScrollTrigger.create({
+      trigger: '.footer',
+      start: 'top 92%',
+      once: true,
+      onEnter: () => {
+        gsap.to('.footer', { autoAlpha: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+      }
+    });
+
+    // ====== MAGNETIC BUTTONS (Desktop Only) ======
+    if (!('ontouchstart' in window) && !navigator.maxTouchPoints) {
+      document.querySelectorAll('.btn-primary, .btn-secondary, .tier-cta').forEach(btn => {
+        const xTo = gsap.quickTo(btn, 'x', { duration: 0.4, ease: 'power3' });
+        const yTo = gsap.quickTo(btn, 'y', { duration: 0.4, ease: 'power3' });
+
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          xTo(x * 0.3);
+          yTo(y * 0.3);
+        });
+
+        btn.addEventListener('mouseleave', () => {
+          xTo(0);
+          yTo(0);
+        });
+      });
+    }
+
+    // ====== ENHANCED CARD HOVERS (GSAP-Powered) ======
+    document.querySelectorAll('.tier-card, .proof-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        gsap.to(card, {
+          y: -8,
+          boxShadow: '0 20px 60px rgba(0,0,0,0.12)',
+          duration: 0.3,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      });
+      card.addEventListener('mouseleave', () => {
+        gsap.to(card, {
+          y: 0,
+          boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+          duration: 0.3,
+          ease: 'power2.out',
+          overwrite: 'auto'
+        });
+      });
+    });
+
+    // ====== STAT CARD FLOAT (After Hero Entrance) ======
+    heroTl.eventCallback('onComplete', () => {
+      statCards.forEach((card, i) => {
+        gsap.to(card, {
+          y: -6,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'sine.inOut',
+          delay: i * 0.3
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
